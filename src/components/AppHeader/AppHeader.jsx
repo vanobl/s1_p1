@@ -1,14 +1,23 @@
 import React from "react";
 import { BurgerIcon, Logo, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import classesHeader from './AppHeader.module.css';
+import AppHeaderButton from "./AppHeaderButton";
 
 
 const AppHeader = () => {
-    //<div style={{display: "inline-block"}} className="text text_type_main-default">Конструктор</div>
+    const listNameMenu = [
+        {logo: 'burger', name: 'Конструктор', last: 0},
+        {logo: 'list', name:'Лента заказов', last: 0},
+        {logo: 'logo', name: 'Лого', last: 0},
+        {logo: 'profile', name: 'Личный кабинет', last: 1}
+    ]
 
     return (
-        <div className="{classesHeader.header} pt-4 pb-4" style={{display: "flex", flexDirection: 'row', alignContent: "space-around"}}>
-            <div style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer"}}>
+        <div className={classesHeader.header}>
+            {listNameMenu.map(nameItem => <AppHeaderButton logo={nameItem.logo} last={nameItem.last}>{nameItem.name}</AppHeaderButton>)}
+
+            {/* this.listNameMenu.map((itemName) => <AppHeaderButton>itemName</AppHeaderButton>); */}
+            {/* <div style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer"}}>
                 <BurgerIcon type="primary" /><p className="text text_type_main-default ml-2">Конструктор</p>
             </div>
 
@@ -21,7 +30,7 @@ const AppHeader = () => {
 
             <div style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer", marginLeft: "auto"}}>
                 <ProfileIcon type="primary" /><p className="text text_type_main-default ml-2">Личный кабинет</p>
-            </div>
+            </div> */}
         </div>
     );
 }

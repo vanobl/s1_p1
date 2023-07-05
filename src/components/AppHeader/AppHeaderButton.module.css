@@ -1,0 +1,10 @@
+.head_button {
+    display: inline-flex;
+    padding: 16px 20px;
+    cursor: pointer;
+}
+
+.last {
+    composes: head_button;
+    margin-left: auto;
+}
