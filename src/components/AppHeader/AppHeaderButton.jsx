@@ -5,14 +5,9 @@ import { BurgerIcon, ListIcon, Logo, ProfileIcon } from "@ya.praktikum/react-dev
 
 const AppHeaderButton = (props) => {
     return (
-        //style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer"}}
-        {props.logo === 'logo' ? (<div style={{display: "inline-flex", marginLeft: "auto"}}>
-                <Logo />
-            </div>)
-            : (<div className={props.last === 1 ? classesButton.last : classesButton.head_button}>
-                <BurgerIcon type="primary" /><p className="text text_type_main-default ml-2">{props.children}</p>
-            </div>)
-        }
+        <div className={props.last === 1 ? classesButton.last : classesButton.head_button}>
+            {props.logo}<p className="text text_type_main-default ml-2">{props.children}</p>
+        </div>
         
     );
 };

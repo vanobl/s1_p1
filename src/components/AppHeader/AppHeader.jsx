@@ -14,7 +14,19 @@ const AppHeader = () => {
 
     return (
         <div className={classesHeader.header}>
-            {listNameMenu.map(nameItem => <AppHeaderButton logo={nameItem.logo} last={nameItem.last}>{nameItem.name}</AppHeaderButton>)}
+            <AppHeaderButton last={0} logo={<BurgerIcon type="secondary" />}>
+                Конструктор
+            </AppHeaderButton>
+            <AppHeaderButton last={0} logo={<ListIcon type="primary" />}>
+                Лента заказов
+            </AppHeaderButton>
+            <div style={{display: "inline-flex", marginLeft: "auto"}}>
+                <Logo />
+            </div>
+            <AppHeaderButton last={1} logo={<ProfileIcon type="primary" />}>
+                Личный кабинет
+            </AppHeaderButton>
+            {/* {listNameMenu.map(nameItem => <AppHeaderButton logo={nameItem.logo} last={nameItem.last}>{nameItem.name}</AppHeaderButton>)} */}
 
             {/* this.listNameMenu.map((itemName) => <AppHeaderButton>itemName</AppHeaderButton>); */}
             {/* <div style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer"}}>
