@@ -17,32 +17,15 @@ const AppHeader = () => {
             <AppHeaderButton last={0} logo={<BurgerIcon type="secondary" />}>
                 Конструктор
             </AppHeaderButton>
-            <AppHeaderButton last={0} logo={<ListIcon type="primary" />}>
+            <AppHeaderButton last={0} logo={<ListIcon type="secondary" />}>
                 Лента заказов
             </AppHeaderButton>
             <div style={{display: "inline-flex", marginLeft: "auto"}}>
                 <Logo />
             </div>
-            <AppHeaderButton last={1} logo={<ProfileIcon type="primary" />}>
+            <AppHeaderButton last={1} logo={<ProfileIcon type="secondary" />}>
                 Личный кабинет
             </AppHeaderButton>
-            {/* {listNameMenu.map(nameItem => <AppHeaderButton logo={nameItem.logo} last={nameItem.last}>{nameItem.name}</AppHeaderButton>)} */}
-
-            {/* this.listNameMenu.map((itemName) => <AppHeaderButton>itemName</AppHeaderButton>); */}
-            {/* <div style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer"}}>
-                <BurgerIcon type="primary" /><p className="text text_type_main-default ml-2">Конструктор</p>
-            </div>
-
-            <div style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer"}}>
-                <ListIcon type="primary" /><p className="text text_type_main-default ml-2">Лента заказов</p>
-            </div>
-            <div style={{display: "inline-flex", marginLeft: "auto"}}>
-                <Logo />
-            </div>
-
-            <div style={{display: "inline-flex", padding: "16px 20px", cursor: "pointer", marginLeft: "auto"}}>
-                <ProfileIcon type="primary" /><p className="text text_type_main-default ml-2">Личный кабинет</p>
-            </div> */}
         </div>
     );
 }
