@@ -5,13 +5,6 @@ import AppHeaderButton from "./AppHeaderButton";
 
 
 const AppHeader = () => {
-    const listNameMenu = [
-        {logo: 'burger', name: 'Конструктор', last: 0},
-        {logo: 'list', name:'Лента заказов', last: 0},
-        {logo: 'logo', name: 'Лого', last: 0},
-        {logo: 'profile', name: 'Личный кабинет', last: 1}
-    ]
-
     return (
         <div className={classesHeader.header}>
             <AppHeaderButton last={0} logo={<BurgerIcon type="secondary" />}>

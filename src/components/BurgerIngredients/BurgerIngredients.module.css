@@ -1,5 +1,6 @@
 .burgerIngredients {
     width: 600px;
     height: 912px;
-    /* border: 1px solid #ffffff; */
+    display: flex;
+    flex-flow: row wrap;
 }
