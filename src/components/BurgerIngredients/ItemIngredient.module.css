@@ -1,0 +1,30 @@
+.elementStyle {
+    width: 272px;
+    height: 208px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.elementImage {
+    width: 240px;
+    height: 120px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.elementPrice {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 24px;
+}
+
+.elementDescription {
+    width: '100%';
+    text-align: center;
+    vertical-align: top;
+}
