@@ -12,14 +12,16 @@ const BurgerIngredients = (props) => {
                 Соберите бургер
             </p>
             <Bookmarks />
-            <NameSection>Булки</NameSection>
-            <IngredientsList ingridients={props.ingridients && props.ingridients.bun} />
+            <div className={styles.ingredientArea}>
+                <NameSection>Булки</NameSection>
+                <IngredientsList ingridients={props.ingridients && props.ingridients.bun} />
 
-            <NameSection>Соусы</NameSection>
-            <IngredientsList ingridients={props.ingridients && props.ingridients.sauce} />
-            
-            <NameSection>Начинки</NameSection>
-            <IngredientsList ingridients={props.ingridients && props.ingridients.main} />
+                <NameSection>Соусы</NameSection>
+                <IngredientsList ingridients={props.ingridients && props.ingridients.sauce} />
+                
+                <NameSection>Начинки</NameSection>
+                <IngredientsList ingridients={props.ingridients && props.ingridients.main} />
+            </div>
         </div>
     );
 }
