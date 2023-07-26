@@ -1,10 +1,18 @@
 .elementStyle {
-    width: 272px;
-    height: 208px;
+    width: 270px;
+    height: 206px;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     cursor: pointer;
+    border: 1px solid #131316;
+    border-radius: 7px;
+    transition: border 350ms;
+}
+
+.elementStyle:hover {
+    border: 1px solid #ffffff;
+    transition: border 350ms;
 }
 
 .elementImage {
