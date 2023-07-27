@@ -1,7 +1,12 @@
 import React from "react";
+import styles from './ModalOverlay.module.css'
 
-const ModalOverlay = () => {
-    return(<div></div>);
+const ModalOverlay = (props) => {
+    return(
+        <div className={styles.modalOvelay}>
+            {props.children}
+        </div>
+    );
 }
 
 export default ModalOverlay;

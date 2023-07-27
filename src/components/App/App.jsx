@@ -6,6 +6,9 @@ import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 
 function App() {
   const [burgerIngridients, setBurgerIngridients] = useState(null);
+  const [valueForModal, setValueForModal] = useState(null);
+  
+  const modalRoot = document.getElementById("modal-root");
 
   function getData() {
     fetch("https://norma.nomoreparties.space/api/ingredients").then(
@@ -26,6 +29,11 @@ function App() {
   useEffect(() => {
     getData();
   }, [])
+
+  function viewModalCreateClient() {
+    setValueForModal(<ClientForm setData={getData} />);
+    setModalActive(true);
+  }
 
   return (
     <section className={styles.app}>

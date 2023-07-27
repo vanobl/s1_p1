@@ -5,7 +5,7 @@ import styles from './ItemIngredient.module.css'
 
 const ItemIngredient = (props) => {
     return(
-        <div className={styles.elementStyle} key={props._id}>
+        <div className={styles.elementStyle}>
             <img className={styles.elementImage} src={props.image} alt="изображение товара" />
             <div className={styles.elementPrice}>
                 <p className="text text_type_digits-default">{props.price}</p>&nbsp;
