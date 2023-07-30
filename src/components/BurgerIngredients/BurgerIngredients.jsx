@@ -14,13 +14,17 @@ const BurgerIngredients = (props) => {
             <Bookmarks />
             <div className={styles.ingredientArea}>
                 <NameSection>Булки</NameSection>
-                <IngredientsList ingridients={props.ingridients && props.ingridients.bun} />
+                <IngredientsList
+                    ingridients={props.ingridients && props.ingridients.bun}
+                    onModal={props.onModal}
+                    offModal={props.offModal}
+                />
 
                 <NameSection>Соусы</NameSection>
-                <IngredientsList ingridients={props.ingridients && props.ingridients.sauce} />
+                <IngredientsList ingridients={props.ingridients && props.ingridients.sauce} onModal={props.onModal} offModal={props.offModal} />
                 
                 <NameSection>Начинки</NameSection>
-                <IngredientsList ingridients={props.ingridients && props.ingridients.main} />
+                <IngredientsList ingridients={props.ingridients && props.ingridients.main} onModal={props.onModal} offModal={props.offModal} />
             </div>
         </div>
     );
