@@ -6,7 +6,7 @@ import Modal from "../Modal/Modal";
 
 const ItemIngredient = (props) => {
     return(
-        <div className={styles.elementStyle} onClick={() => {props.onModal('Пробное окно ' + props.name, 'Пробное тело')}}>
+        <div className={styles.elementStyle} onClick={() => {props.onModal('Пробное окно ' + props.name, props.price)}}>
             <img className={styles.elementImage} src={props.image} alt="изображение товара" />
             <div className={styles.elementPrice}>
                 <p className="text text_type_digits-default">{props.price}</p>&nbsp;

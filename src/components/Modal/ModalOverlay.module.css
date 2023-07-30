@@ -1,6 +1,6 @@
 .modalOvelay {
     height: 100vh;
-    width: 100vh;
+    width: 100vw;
     background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
     top: 0;

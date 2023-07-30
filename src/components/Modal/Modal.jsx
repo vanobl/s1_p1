@@ -7,7 +7,7 @@ const Modal = (props) => {
     let modalRoot = document.getElementById("modal-root");
 
     return ReactDOM.createPortal(
-        <ModalOverlay>
+        <ModalOverlay offModal={props.offModal}>
             <div className={styles.modalContent}>
                 {props.children}
             </div>

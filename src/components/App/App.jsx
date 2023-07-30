@@ -8,15 +8,15 @@ import Modal from '../Modal/Modal';
 function App() {
   const [burgerIngridients, setBurgerIngridients] = useState(null);
   const [modalActive, setModalActive] = React.useState(false);
+  const [modal, setModal] = useState(null);
+
   
   const modalRoot = document.getElementById("modal-root");
 
-  let modal;
-
   function onModal(header, body) {
-    console.log('Заголовок: ' + header);
-    console.log('Тело: ' + body);
-    modal = (<Modal modaPlace={modalRoot} />)
+    // console.log('Заголовок: ' + header);
+    // console.log('Тело: ' + body);
+    setModal((<Modal modaPlace={modalRoot} header={header} offModal={offModal}>{body}</Modal>));
     setModalActive(true);
   }
 
