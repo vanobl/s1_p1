@@ -1,18 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ModalOverlay from "./ModalOverlay";
+import ModalHeader from "./ModalHeader";
 import styles from './Modal.module.css'
 
 const Modal = (props) => {
-    let modalRoot = document.getElementById("modal-root");
-
-    return ReactDOM.createPortal(
-        <ModalOverlay offModal={props.offModal}>
-            <div className={styles.modalContent}>
-                {props.children}
-            </div>
-        </ModalOverlay>,
-        props.modaPlace,
+    return(
+        <div className={styles.modalContent}>
+            <ModalHeader headerText="Детали ингредиента" offModal={props.offModal} />
+            {props.children}
+        </div>
     );
 }
 
