@@ -23,20 +23,20 @@ function App() {
           <p className="text text_type_main-medium" style={{width: 520, marginLeft: 100, textAlign: 'center', marginTop: 16, marginBottom: 32}}>{modalBody.name}</p>
           <section style={{width: 520, height: 56, display: 'flex', justifyContent: 'space-around', marginLeft: 100, marginBottom: 60}}>
             <div style={{textAlign: 'center'}}>
-              <p className="text text_type_main-default">Калории, ккал.</p>
-              <p className="text text_type_digits-default">{modalBody.calories}</p>
+              <p className="text text_type_main-default text_color_inactive">Калории, ккал.</p>
+              <p className="text text_type_digits-default text_color_inactive">{modalBody.calories}</p>
             </div>
             <div style={{textAlign: 'center'}}>
-              <p className="text text_type_main-default">Белки, г.</p>
-              <p className="text text_type_digits-default">{modalBody.proteins}</p>
+              <p className="text text_type_main-default text_color_inactive">Белки, г.</p>
+              <p className="text text_type_digits-default text_color_inactive">{modalBody.proteins}</p>
             </div>
             <div style={{textAlign: 'center'}}>
-              <p className="text text_type_main-default">Жиры, г.</p>
-              <p className="text text_type_digits-default">{modalBody.fat}</p>
+              <p className="text text_type_main-default text_color_inactive">Жиры, г.</p>
+              <p className="text text_type_digits-default text_color_inactive">{modalBody.fat}</p>
             </div>
             <div style={{textAlign: 'center'}}>
-              <p className="text text_type_main-default">Углеводы, г.</p>
-              <p className="text text_type_digits-default">{modalBody.carbohydrates}</p>
+              <p className="text text_type_main-default text_color_inactive">Углеводы, г.</p>
+              <p className="text text_type_digits-default text_color_inactive">{modalBody.carbohydrates}</p>
             </div>
           </section>
         </Modal>

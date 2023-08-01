@@ -2,11 +2,6 @@
     display: inline-flex;
     padding: 16px 20px;
     cursor: pointer;
-    color: #8584ae;
-}
-
-.head_button:hover {
-    color: #ffffff;
 }
 
 .last {

@@ -7,16 +7,16 @@ import AppHeaderButton from "./AppHeaderButton";
 const AppHeader = () => {
     return (
         <div className={classesHeader.header}>
-            <AppHeaderButton last={0} logo={<BurgerIcon type="secondary" />}>
+            <AppHeaderButton last={0} logo="BurgerIcon">
                 Конструктор
             </AppHeaderButton>
-            <AppHeaderButton last={0} logo={<ListIcon type="secondary" />}>
+            <AppHeaderButton last={0} logo="ListIcon">
                 Лента заказов
             </AppHeaderButton>
             <div style={{display: "inline-flex", marginLeft: "auto"}}>
                 <Logo />
             </div>
-            <AppHeaderButton last={1} logo={<ProfileIcon type="secondary" />}>
+            <AppHeaderButton last={1} logo="ProfileIcon">
                 Личный кабинет
             </AppHeaderButton>
         </div>
