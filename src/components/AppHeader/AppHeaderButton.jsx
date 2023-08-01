@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classesButton from './AppHeaderButton.module.css';
-import { BurgerIcon, ListIcon, Logo, ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { BurgerIcon, ListIcon, ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 
 const AppHeaderButton = (props) => {

@@ -79,7 +79,7 @@ function App() {
     <section className={styles.app}>
       <AppHeader />
       <BurgerIngredients ingridients={burgerIngridients ? burgerIngridients : null} onModal={onModal} offModal={offModal} />
-      <BurgerConstructor />
+      <BurgerConstructor ingridients={burgerIngridients ? burgerIngridients : null} />
       {modalActive && modal}
     </section>
   );
