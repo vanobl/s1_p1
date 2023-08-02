@@ -7,7 +7,7 @@ import { Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-co
 const BurgerConstructor = (props) => {
     return(
         <div className={styles.BurgerConstructor}>
-            <SectionBurger ingridients={props.ingridients} />
+            {props.ingridients && <SectionBurger ingridients={props.ingridients} />}
             <section>
                 <div style={{display: 'flex', flexFlow: 'row wrap', alignItems: 'center', marginTop: '40px', marginRight: '16px', justifyContent: 'right'}}>
                     <p className="text text_type_digits-medium">634</p>&nbsp;
