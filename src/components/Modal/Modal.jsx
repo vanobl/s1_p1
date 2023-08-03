@@ -7,7 +7,6 @@ import styles from './Modal.module.css'
 const Modal = (props) => {
     return(
         <div className={styles.modalContent}>
-            <ModalHeader headerText="Детали ингредиента" offModal={props.offModal} />
             {props.children}
         </div>
     );
