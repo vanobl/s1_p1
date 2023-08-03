@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './SectionBurger.module.css'
 
@@ -14,7 +14,7 @@ const SectionBurger = React.memo((props) => {
 
     function getMain() {
         let lengthMain = props.ingridients.main.length;
-        let maxIngredients = 5;
+        let maxIngredients = Math.floor(Math.random() * 5);
         let ingredients = [];
 
         for(let i = 0; i < maxIngredients; i++){
