@@ -12,7 +12,7 @@ const ItemIngredient = (props) => {
                 <p className="text text_type_digits-default">{props.info.price}</p>&nbsp;
                 <CurrencyIcon type="primary" />
             </div>
-            <p className="text text_type_main-small" style={{width: '100%', textAlign: 'center', verticalAlign: 'top'}}>{props.info.name}</p>
+            <p className={`text text_type_main-small ${styles.elementDescription}`}>{props.info.name}</p>
         </div>
     );
 }

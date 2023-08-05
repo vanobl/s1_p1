@@ -1,6 +1,7 @@
 import React from "react";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './SectionBurger.module.css'
+import BurgerElement from "./BurgerElement";
 
 const SectionBurger = React.memo((props) => {
     let total = 0;
@@ -39,6 +40,7 @@ const SectionBurger = React.memo((props) => {
         let lengthSauce = props.ingridients.bun.length;
         let newSauce = props.ingridients.sauce[Math.floor(Math.random() * lengthSauce)];
         total += newSauce.price;
+        props.setTotal(total);
         return newSauce;
     }
 
@@ -56,24 +58,8 @@ const SectionBurger = React.memo((props) => {
                 thumbnail={bun.image_mobile}
                 extraClass="ml-8"
             />}
-            {ingredients.map(info => <div style={{display: 'flex', flexFlow: 'row wrap', alignItems: 'center'}}>
-                <DragIcon type="primary" />
-                <ConstructorElement
-                    text={info.name}
-                    price={info.price}
-                    thumbnail={info.image_mobile}
-                    extraClass="ml-2"
-                />
-            </div>)}
-            <div style={{display: 'flex', flexFlow: 'row wrap', alignItems: 'center'}}>
-                <DragIcon type="primary" />
-                <ConstructorElement
-                    text={sauce.name}
-                    price={sauce.price}
-                    thumbnail={sauce.image_mobile}
-                    extraClass="ml-2"
-                />
-            </div>
+            {ingredients.map(info => <BurgerElement {...info} />)}
+            <BurgerElement {...sauce} />
             <ConstructorElement
                 type="bottom"
                 isLocked={true}

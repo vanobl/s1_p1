@@ -9,7 +9,9 @@ const ModalHeader = (props) => {
             <p className="text text_type_main-large">
                 {props.headerText}
             </p>
-            <CloseIcon type="secondary" style={{cursor: "pointer"}} className={styles.closeButton} onClick={props.offModal} />
+            <div className={styles.closeButton}>
+                <CloseIcon type="secondary" onClick={props.offModal} />
+            </div>
         </div>
     );
 }

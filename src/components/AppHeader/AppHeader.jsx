@@ -13,7 +13,7 @@ const AppHeader = () => {
             <AppHeaderButton last={0} logo="ListIcon">
                 Лента заказов
             </AppHeaderButton>
-            <div style={{display: "inline-flex", marginLeft: "auto"}}>
+            <div className={classesHeader.headerLogo}>
                 <Logo />
             </div>
             <AppHeaderButton last={1} logo="ProfileIcon">

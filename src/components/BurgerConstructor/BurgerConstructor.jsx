@@ -5,7 +5,6 @@ import { Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-co
 
 
 const BurgerConstructor = (props) => {
-    // const [orderNumber, setOrderNumber] = useState('');
     const [total, setTotal] = useState(0);
 
     function getNumberOrder() {
@@ -16,19 +15,14 @@ const BurgerConstructor = (props) => {
             stringNumber += itemNumber;
         }
 
-        // setOrderNumber(stringNumber);
         return stringNumber;
     }
-
-    // useEffect(() => {
-    //     getNumberOrder();
-    // });
 
     return(
         <div className={styles.BurgerConstructor}>
             {props.ingridients && <SectionBurger ingridients={props.ingridients} setTotal={setTotal} />}
             <section>
-                <div style={{display: 'flex', flexFlow: 'row wrap', alignItems: 'center', marginTop: '40px', marginRight: '16px', justifyContent: 'right'}}>
+                <div className={styles.ingredientSpace}>
                     <p className="text text_type_digits-medium">{total}</p>&nbsp;
                     <CurrencyIcon type="primary" />
                     <Button htmlType="button" type="primary" size="large" extraClass="ml-10" onClick={() => {props.onModal('order', getNumberOrder())}}>Оформить заказ</Button>
