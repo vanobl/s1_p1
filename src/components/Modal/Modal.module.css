@@ -21,3 +21,19 @@
     align-items: center;
     justify-content: center;
 }
+
+.modalHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    width: 640px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.closeButton {
+    cursor: pointer;
+}

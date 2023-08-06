@@ -47,13 +47,6 @@ const BurgerConstructor = (props) => {
             extraClass="ml-10"
             onClick={openModal}
           >Оформить заказ</Button>
-          <Button
-            htmlType="button"
-            type="primary"
-            size="large"
-            extraClass="ml-10"
-            onClick={openModal}
-          >Подсчитать</Button>
         </div>
       </section>
       {isOpen && <Modal offModal={closeModal} header="Детали ингредиента">

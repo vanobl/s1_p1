@@ -49,6 +49,7 @@ const SectionBurger = React.memo((props) => {
   let bunIdBottom = bun._id + "_bottom";
   let ingredients = getMain();
   let sauce = getSauce();
+  props.setTotal(total);
 
   return(
     <div className={styles.sectionBurger}>
@@ -77,7 +78,8 @@ const SectionBurger = React.memo((props) => {
 });
 
 SectionBurger.propTypes = {
-  ingridients: PropTypes.object
+  ingridients: PropTypes.object,
+  setTotal: PropTypes.func
 };
 
 export default SectionBurger;
