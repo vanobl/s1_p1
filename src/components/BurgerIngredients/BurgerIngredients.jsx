@@ -1,34 +1,63 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from './BurgerIngredients.module.css'
 import Bookmarks from "./Bookmarks";
-import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import IngredientsList from "./IngredientsList";
 import NameSection from "./NameSection";
+import Modal from "../Modal/Modal";
+import IngredientDetails from "../Modal/IngredientDetails";
+import PropTypes from 'prop-types';
 
 const BurgerIngredients = (props) => {
-    return (
-        <div className={styles.burgerIngredients}>
-            <p className="text text_type_main-large pt-10">
-                Соберите бургер
-            </p>
-            <Bookmarks />
-            <div className={styles.ingredientArea}>
-                <NameSection>Булки</NameSection>
-                <IngredientsList
-                    ingridients={props.ingridients && props.ingridients.bun}
-                    onModal={props.onModal}
-                    offModal={props.offModal}
-                />
+  const [isOpen, setIsOpen] = useState(false);
+  const [ingredient, setIngredient] = useState(null);
 
-                <NameSection>Соусы</NameSection>
-                <IngredientsList ingridients={props.ingridients && props.ingridients.sauce} onModal={props.onModal} offModal={props.offModal} />
-                
-                <NameSection>Начинки</NameSection>
-                <IngredientsList ingridients={props.ingridients && props.ingridients.main} onModal={props.onModal} offModal={props.offModal} />
-            </div>
-        </div>
-    );
-}
+  function openModal(ingredient) {
+    setIngredient(ingredient);
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  return (
+    <div className={styles.burgerIngredients}>
+      <p className="text text_type_main-large pt-10">
+          Соберите бургер
+      </p>
+      <Bookmarks />
+      <div className={styles.ingredientArea}>
+        <NameSection>Булки</NameSection>
+        <IngredientsList
+            ingridients={props.ingridients && props.ingridients.bun}
+            openModal={openModal}
+            closeModal={closeModal}
+        />
+
+        <NameSection>Соусы</NameSection>
+        <IngredientsList
+          ingridients={props.ingridients && props.ingridients.sauce}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
+          
+        <NameSection>Начинки</NameSection>
+        <IngredientsList
+          ingridients={props.ingridients && props.ingridients.main}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
+      </div>
+      {isOpen && <Modal offModal={closeModal} header="Детали ингредиента">
+        <IngredientDetails ingredient={ingredient} />
+      </Modal>}
+    </div>
+  );
+};
+
+BurgerIngredients.propTypes = {
+  ingridients: PropTypes.object
+};
 
 
 export default BurgerIngredients;

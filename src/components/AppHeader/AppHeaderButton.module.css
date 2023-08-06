@@ -1,10 +1,22 @@
 .head_button {
     display: inline-flex;
     padding: 16px 20px;
-    cursor: pointer;
+    /* cursor: pointer; */
+    text-decoration: none !important;
+    color: #8585AD;
+    /* pointer-events: none; */
 }
 
-.last {
-    composes: head_button;
+.head_button:last-child {
     margin-left: auto;
+}
+
+.head_button:hover {
+    color: #F2F2F3;
+}
+
+.head_button_active {
+    composes: head_button;
+    color: #F2F2F3;
+    pointer-events: none;
 }

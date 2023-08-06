@@ -7,16 +7,16 @@ import AppHeaderButton from "./AppHeaderButton";
 const AppHeader = () => {
     return (
         <div className={classesHeader.header}>
-            <AppHeaderButton last={0} logo="BurgerIcon">
+            <AppHeaderButton logo="BurgerIcon" isActive={true}>
                 Конструктор
             </AppHeaderButton>
-            <AppHeaderButton last={0} logo="ListIcon">
+            <AppHeaderButton logo="ListIcon" isActive={false}>
                 Лента заказов
             </AppHeaderButton>
             <div className={classesHeader.headerLogo}>
                 <Logo />
             </div>
-            <AppHeaderButton last={1} logo="ProfileIcon">
+            <AppHeaderButton logo="ProfileIcon" isActive={false}>
                 Личный кабинет
             </AppHeaderButton>
         </div>

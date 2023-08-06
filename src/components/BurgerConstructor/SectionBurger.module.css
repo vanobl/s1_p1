@@ -20,3 +20,8 @@
 .sectionBurger::-webkit-scrollbar-thumb {
     background-color: #8585AD;
 }
+
+.bunTopAndBottom {
+    max-height: 80px;
+    margin-left: 32px;
+}
