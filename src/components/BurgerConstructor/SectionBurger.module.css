@@ -3,10 +3,10 @@
     flex-direction: column;
     gap: 10px;
     height: 668px;
-    overflow: hidden;
+    /* overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: 8px;
-    scrollbar-color: #8585AD #2F2F37;
+    scrollbar-color: #8585AD #2F2F37; */
 }
 
 .sectionBurger::-webkit-scrollbar {
@@ -24,4 +24,27 @@
 .bunTopAndBottom {
     max-height: 80px;
     margin-left: 32px;
+}
+
+.sectionMainAndSauce {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 508px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: 8px;
+    scrollbar-color: #8585AD #2F2F37;
+}
+
+.sectionMainAndSauce::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sectionMainAndSauce::-webkit-scrollbar-track {
+    background-color: #2F2F37;
+}
+
+.sectionMainAndSauce::-webkit-scrollbar-thumb {
+    background-color: #8585AD;
 }

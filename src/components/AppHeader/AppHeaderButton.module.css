@@ -1,10 +1,8 @@
 .head_button {
     display: inline-flex;
     padding: 16px 20px;
-    /* cursor: pointer; */
     text-decoration: none !important;
     color: #8585AD;
-    /* pointer-events: none; */
 }
 
 .head_button:last-child {
@@ -13,6 +11,18 @@
 
 .head_button:hover {
     color: #F2F2F3;
+}
+
+.head_button:hover svg {
+    fill: #F2F2F3;
+}
+
+.head_button_active {
+    color: #F2F2F3;
+}
+
+.head_button_active svg {
+    fill: #F2F2F3;
 }
 
 .head_button_active {

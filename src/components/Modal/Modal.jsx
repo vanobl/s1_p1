@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import ModalOverlay from "./ModalOverlay";
 import styles from './Modal.module.css';
@@ -7,19 +7,19 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 const Modal = (props) => {
   const modalRoot = document.getElementById("modal-root");
-  const escFunction = useCallback((event) => {
-    if (event.key === 'Escape') {
-      props.offModal();
-    }
-  }, []);
 
   useEffect(() => {
+    const escFunction = (event) => {
+      if (event.key === 'Escape') {
+        props.offModal();
+      }
+    };
     document.addEventListener('keydown', escFunction, false);
 
     return () => {
       document.removeEventListener('keydown', escFunction, false);
     };
-  }, [escFunction]);
+  }, [props]);
 
   return ReactDOM.createPortal(
     <section className={styles.modalWindow}>
@@ -42,7 +42,7 @@ const Modal = (props) => {
 
 Modal.propTypes = {
   header: PropTypes.string,
-  offModal: PropTypes.func,
+  offModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired
 };
 

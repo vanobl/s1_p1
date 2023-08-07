@@ -18,16 +18,14 @@
 .elementImage {
     width: 240px;
     height: 120px;
-    margin-left: 16px;
-    margin-right: 16px;
+    gap: 16px;
 }
 
 .elementPrice {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    gap: 4px;
     height: 24px;
 }
 

@@ -1,57 +1,13 @@
-// export const getIngredients = () => {
-//   return fetch("https://norma.nomoreparties.space/api/ingredients").then(
-//     response => response.json()
-//   ).then((data) => {
-//     let res = data.data.reduce((acc, curVal) => {
-//       let type = curVal.type;
+const norma_api = "https://norma.nomoreparties.space";
 
-//       if (!acc[type]) {
-//         acc[type] = [];
-//       }
-
-//       acc[type].push(curVal);
-//       return acc;
-//     }, {});
-//     console.log(res);
-//     return res;
-//   }).catch(err => alert(err))
-// }
-
-// export const promise = new Promise((resolve, reject) => {
-//   let res = fetch("https://norma.nomoreparties.space/api/ingredients");
-
-//   if (res.ok) {
-//     let resJson = res.json();
-//     let resObj = resJson.data.reduce((acc, curVal) => {
-//       let type = curVal.type;
-
-//       if (!acc[type]) {
-//         acc[type] = [];
-//       }
-
-//       acc[type].push(curVal);
-//       return acc;
-//     }, {});
-//     resolve(resObj);
-//   } else {
-//     reject("что-то пошло не так");
-//   }
-// })
-
-export function getData() {
-  return fetch("https://norma.nomoreparties.space/api/ingredients").then(
-    response => response.json()
-  ).then((data) => {
-    let res = data.data.reduce((acc, curVal) => {
-      let type = curVal.type;
-
-      if (!acc[type]) {
-        acc[type] = [];
-      }
-
-      acc[type].push(curVal);
-      return acc;
-    }, {});
-    return res;
-  }).catch(err => alert(err))
-}
+export async function getIngredients() {
+  try {
+    const response = await fetch(norma_api + "/api/ingredients");
+    const data = await response.json();
+    console.log("данные получены");
+    console.log(data);
+    return data;
+  } catch (err) {
+    alert("Ошибка " + err);
+  }
+};

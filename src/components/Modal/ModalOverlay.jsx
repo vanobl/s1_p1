@@ -5,14 +5,12 @@ import PropTypes from 'prop-types';
 const ModalOverlay = (props) => {
   return(
     <div className={styles.modalOvelay} onClick={props.offModal}>
-        {props.children}
     </div>
   );
 };
 
 ModalOverlay.propTypes = {
-  children: PropTypes.node.isRequired,
-  offModal: PropTypes.func
+  offModal: PropTypes.func.isRequired
 };
 
 export default ModalOverlay;
