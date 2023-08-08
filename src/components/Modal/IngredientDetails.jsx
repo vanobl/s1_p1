@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './IngredientDetails.module.css';
-import PropTypes from 'prop-types';
+import { burgerType } from '../Utils/prop-types';
 
 const IngredientDetails = (props) => {
   return (
@@ -33,20 +33,7 @@ const IngredientDetails = (props) => {
 };
 
 IngredientDetails.propTypes = {
-  ingredient: {
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    type: PropTypes.string,
-    proteins: PropTypes.number,
-    fat: PropTypes.number,
-    carbohydrates: PropTypes.number,
-    calories: PropTypes.number,
-    price: PropTypes.number,
-    image: PropTypes.string,
-    image_mobile: PropTypes.string,
-    image_large: PropTypes.string,
-    __v: PropTypes.number
-  }.isRequired
+  ingredient: burgerType.isRequired
 };
 
 export default IngredientDetails;

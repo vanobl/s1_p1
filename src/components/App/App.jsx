@@ -9,16 +9,20 @@ function App() {
   const [burgerIngridients, setBurgerIngridients] = useState(null);
 
 async function fillData() {
-  let data = await getIngredients();
-  let res = data.data.reduce((acc, curVal) => {
-    let type = curVal.type;
-    if (!acc[type]) {
-      acc[type] = [];
-    }
-    acc[type].push(curVal);
-    return acc;
-  }, {});
-  setBurgerIngridients(res);
+  try {
+    let data = await getIngredients();
+    let res = data.data.reduce((acc, curVal) => {
+      let type = curVal.type;
+      if (!acc[type]) {
+        acc[type] = [];
+      }
+      acc[type].push(curVal);
+      return acc;
+    }, {});
+    setBurgerIngridients(res);
+  } catch (err) {
+    alert(err);
+  }
 }
 
 useEffect(() => {

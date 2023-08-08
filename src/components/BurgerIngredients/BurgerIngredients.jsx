@@ -5,6 +5,7 @@ import IngredientsList from "./IngredientsList";
 import Modal from "../Modal/Modal";
 import IngredientDetails from "../Modal/IngredientDetails";
 import PropTypes from 'prop-types';
+import { burgerType } from '../Utils/prop-types';
 
 const BurgerIngredients = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,21 +29,21 @@ const BurgerIngredients = (props) => {
       <div className={styles.ingredientArea}>
         <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Булки</p>
         <IngredientsList
-            ingridients={props.ingridients && props.ingridients.bun}
+            ingridients={props.ingridients.bun}
             openModal={openModal}
             closeModal={closeModal}
         />
 
         <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Соусы</p>
         <IngredientsList
-          ingridients={props.ingridients && props.ingridients.sauce}
+          ingridients={props.ingridients.sauce}
           openModal={openModal}
           closeModal={closeModal}
         />
           
         <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Начинки</p>
         <IngredientsList
-          ingridients={props.ingridients && props.ingridients.main}
+          ingridients={props.ingridients.main}
           openModal={openModal}
           closeModal={closeModal}
         />
@@ -57,20 +58,7 @@ const BurgerIngredients = (props) => {
 BurgerIngredients.propTypes = {
   ingridients: PropTypes.shape(
     PropTypes.arrayOf(
-      PropTypes.shape({
-        _id: PropTypes.string,
-        name: PropTypes.string,
-        type: PropTypes.string,
-        proteins: PropTypes.number,
-        fat: PropTypes.number,
-        carbohydrates: PropTypes.number,
-        calories: PropTypes.number,
-        price: PropTypes.number,
-        image: PropTypes.string,
-        image_mobile: PropTypes.string,
-        image_large: PropTypes.string,
-        __v: PropTypes.number
-      }).isRequired
+      PropTypes.shape(burgerType).isRequired
     ).isRequired
   ).isRequired
 };

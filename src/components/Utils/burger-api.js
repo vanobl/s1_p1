@@ -1,8 +1,11 @@
-const norma_api = "https://norma.nomoreparties.space";
+const NORMA_API = "https://norma.nomoreparties.space";
 
 export async function getIngredients() {
   try {
-    const response = await fetch(norma_api + "/api/ingredients");
+    const response = await fetch(NORMA_API + "/api/ingredients");
+
+    status(response);
+
     const data = await response.json();
     console.log("данные получены");
     console.log(data);
@@ -11,3 +14,10 @@ export async function getIngredients() {
     alert("Ошибка " + err);
   }
 };
+
+function status(response) {
+  if (!response.ok) {
+    return Promise.reject();
+  }
+  return response
+}
