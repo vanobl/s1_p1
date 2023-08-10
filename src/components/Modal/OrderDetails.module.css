@@ -1,0 +1,16 @@
+.spaceIcon {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 120px;
+    height: 120px;
+    background-image: url("../../images/octagon_full.png");
+    background-size: 120px 120px;
+    margin-left: 300px;
+}
+
+.icon {
+    position: relative;
+    z-index: 2;
+}

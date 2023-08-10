@@ -1,0 +1,32 @@
+.head_button {
+    display: inline-flex;
+    padding: 16px 20px;
+    text-decoration: none !important;
+    color: #8585AD;
+}
+
+.head_button:last-child {
+    margin-left: auto;
+}
+
+.head_button:hover {
+    color: #F2F2F3;
+}
+
+.head_button:hover svg {
+    fill: #F2F2F3;
+}
+
+.head_button_active {
+    color: #F2F2F3;
+}
+
+.head_button_active svg {
+    fill: #F2F2F3;
+}
+
+.head_button_active {
+    composes: head_button;
+    color: #F2F2F3;
+    pointer-events: none;
+}

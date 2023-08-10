@@ -1,0 +1,20 @@
+.app {
+    max-width: 1240px;
+    /* text-align: center; */
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.modalFullImage {
+    width: 480px;
+    height: 240px;
+}
+
+.paragraph {
+    width: 520px;
+    margin-left: 100px;
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}

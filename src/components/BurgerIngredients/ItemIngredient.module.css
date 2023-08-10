@@ -1,0 +1,36 @@
+.elementStyle {
+    width: 270px;
+    height: 206px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #131316;
+    border-radius: 7px;
+    transition: border 350ms;
+}
+
+.elementStyle:hover {
+    border: 1px solid #ffffff;
+    transition: border 350ms;
+}
+
+.elementImage {
+    width: 240px;
+    height: 120px;
+    gap: 16px;
+}
+
+.elementPrice {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 4px;
+    height: 24px;
+}
+
+.elementDescription {
+    width: 100%;
+    text-align: center;
+    vertical-align: top;
+}

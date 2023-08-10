@@ -1,0 +1,15 @@
+.BurgerConstructor {
+    width: 600px;
+    height: 912px;
+    margin-left: 40px;
+    padding-top: 100px;
+}
+
+.ingredientSpace {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-top: 40px;
+    margin-right: 16px;
+    justify-content: right;
+}
