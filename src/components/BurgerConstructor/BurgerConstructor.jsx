@@ -4,11 +4,14 @@ import SectionBurger from "./SectionBurger";
 import { Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../Modal/OrderDetails";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const BurgerConstructor = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [orderNumber, setOrderNumber] = useState(null);
+  
+  const totalSum = useSelector(state => state.totalSum.totalSum)
 
   function openModal() {
     setOrderNumber(getNumberOrder());
@@ -36,7 +39,7 @@ const BurgerConstructor = () => {
      <SectionBurger />
       <section>
         <div className={styles.ingredientSpace}>
-          <p className="text text_type_digits-medium">4925</p>&nbsp;
+          <p className="text text_type_digits-medium">{totalSum}</p>&nbsp;
           <CurrencyIcon type="primary" />
           <Button
             htmlType="button"
