@@ -4,13 +4,17 @@ import AppHeader from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import { getIngredients } from '../Utils/burger-api';
-import { rootReducer } from '../Utils/reducers';
-import { createStore } from 'redux';
+import rootReducer from '../../services/reducers/rootReducer';
 import { Provider } from 'react-redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 
 function App() {
   const [burgerIngridients, setBurgerIngridients] = useState(null);
-  const store = createStore(rootReducer);
+  // const store = createStore(rootReducer);
+
+  const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+  const enhancer = composeEnhancers();
+  const store = createStore(rootReducer, enhancer);
 
   async function fillData() {
     try {

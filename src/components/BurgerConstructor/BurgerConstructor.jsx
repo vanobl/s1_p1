@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './BurgerConstructor.module.css'
 import SectionBurger from "./SectionBurger";
 import { Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Modal from "../Modal/Modal";
 import OrderDetails from "../Modal/OrderDetails";
 import { useDispatch, useSelector } from "react-redux";
+import setOrderNumber from "../../services/actions/setOrderNumber";
 
 
 const BurgerConstructor = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [orderNumber, setOrderNumber] = useState(null);
+
+  const dispatch = useDispatch();
   
   const totalSum = useSelector(state => state.totalSum.totalSum)
+  const orderNumber = useSelector(state => state.orderNumber.number)
 
   function openModal() {
-    setOrderNumber(getNumberOrder());
     setIsOpen(true);
   }
 
@@ -33,6 +35,10 @@ const BurgerConstructor = () => {
 
     return stringNumber;
   }
+
+  useEffect(() => {
+    dispatch(setOrderNumber(getNumberOrder()));
+  }, []);
 
   return(
     <div className={styles.BurgerConstructor}>

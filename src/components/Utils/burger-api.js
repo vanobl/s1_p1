@@ -7,8 +7,6 @@ export async function getIngredients() {
     status(response);
 
     const data = await response.json();
-    console.log("данные получены");
-    console.log(data);
     return data;
   } catch (err) {
     alert("Ошибка " + err);

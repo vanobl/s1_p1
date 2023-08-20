@@ -1,8 +1,6 @@
-import { combineReducers } from "redux";
-
 // Исходное состояние общей суммы
 const defaultState = {
-    totalSum: 0,
+    totalSum: 0
 };
 
 // Редьюсер общей суммы
@@ -18,6 +16,4 @@ const totalSum = (state = defaultState, action) => {
     }
 }
 
-
-// Корневой редьюсер
-export const rootReducer = combineReducers({totalSum})
+export default totalSum;

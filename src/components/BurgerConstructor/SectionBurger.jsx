@@ -3,19 +3,15 @@ import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-comp
 import styles from './SectionBurger.module.css'
 import BurgerElement from "./BurgerElement";
 import { useDispatch } from "react-redux";
+import increaseAmount from "../../services/actions/increaseAmount";
 
 const SectionBurger = React.memo(() => {
   const dispatch = useDispatch();
 
   const sums = [1255, 988, 1337, 3000, 300, 874, 90, 1255];
 
-  const addToTotal = (sum) => {
-    dispatch({type: "INCREASE_AMOUNT", newSum: sum});
-  }
-
   useEffect(() => {
-    // addToTotal();
-    sums.map(itemSum => addToTotal(itemSum))
+    sums.map(itemSum => dispatch(increaseAmount(itemSum)));
   }, []);
 
   return(
