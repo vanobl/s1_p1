@@ -7,7 +7,7 @@ import IngredientDetails from "../Modal/IngredientDetails";
 import PropTypes from 'prop-types';
 import { burgerType } from '../Utils/prop-types';
 import { getIngredients } from "../Utils/burger-api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import addToIngredientsList from "../../services/actions/addToIngredientsList";
 
 const BurgerIngredients = (props) => {
@@ -16,13 +16,12 @@ const BurgerIngredients = (props) => {
 
   const dispatch = useDispatch();
 
+  const listIngredients = useSelector(state => state.ingredientsList.list);
+
   async function fillData() {
     try {
       let data = await getIngredients();
-      data.data.map((ingredient) => {
-        console.log(ingredient);
-        dispatch(addToIngredientsList(ingredient));
-      });
+      data.data.map(ingredient => dispatch(addToIngredientsList(ingredient)));
     } catch (err) {
       alert(err);
     }
@@ -37,9 +36,10 @@ const BurgerIngredients = (props) => {
     setIsOpen(false);
   }
 
-  useEffect(() => {
-    fillData();
-  }, []);
+  // useEffect(() => {
+  //   fillData();
+  // }, []);
+  fillData();
 
   return (
     <div className={styles.burgerIngredients}>
@@ -50,9 +50,9 @@ const BurgerIngredients = (props) => {
       <div className={styles.ingredientArea}>
         <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Булки</p>
         <IngredientsList
-            ingridients={props.ingridients.bun}
-            openModal={openModal}
-            closeModal={closeModal}
+          ingridients={listIngredients["bun"]}
+          openModal={openModal}
+          closeModal={closeModal}
         />
 
         <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Соусы</p>

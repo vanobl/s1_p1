@@ -6,7 +6,7 @@ import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import { getIngredients } from '../Utils/burger-api';
 import rootReducer from '../../services/reducers/rootReducer';
 import { Provider } from 'react-redux';
-import { compose, createStore, applyMiddleware } from 'redux';
+import { compose, createStore } from 'redux';
 
 function App() {
   const [burgerIngridients, setBurgerIngridients] = useState(null);

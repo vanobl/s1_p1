@@ -1,19 +1,22 @@
 // Исходное состояние списка ингредиентов
 const defaultIngredientsList = {
-    list: []
+    list: {}
 }
 
 // Редьюсер списка ингредиентов
 const ingredientsList = (state = defaultIngredientsList, action) => {
     switch (action.type) {
         case 'ADD_TO_LIST':
-            state.list.push(action.newIngredient);
+            if (!state.list[action.newIngredient.type]) {
+                state.list[action.newIngredient.type] = [];
+            }
+            state.list[action.newIngredient.type].push(action.newIngredient);
             return {...state, list: state.list};
-            // return {...state, list: state.list.push(action.newIngredient)};
         case 'REMOVE_FROM_LIST':
-            let idx = state.list.indexOf(action.newList);
+            let idx = state.list[action.removeIngredient.type].indexOf(action.removeIngredient);
             if (idx !== -1) {
-                return state.list.splice(idx, 1);
+                state.list.splice(idx, 1);
+                return state;
             } else {
                 return state;
             }
