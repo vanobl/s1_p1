@@ -10,7 +10,6 @@ import { compose, createStore, applyMiddleware } from 'redux';
 
 function App() {
   const [burgerIngridients, setBurgerIngridients] = useState(null);
-  // const store = createStore(rootReducer);
 
   const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
   const enhancer = composeEnhancers();
