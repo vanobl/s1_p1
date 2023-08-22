@@ -5,17 +5,15 @@ import PropTypes from 'prop-types';
 import { burgerType } from '../Utils/prop-types';
 
 const IngredientsList = (props) => {
-  useEffect(() => {
-    console.log(props.ingridients);
-  }, []);
+  // useEffect(() => {
+  //   console.log(props.ingridients);
+  // }, []);
 
   return(
     <div className={styles.ingredientList}>
       {props.ingridients.map(info => <ItemIngredient
         info={info}
         key={info._id}
-        onModal={props.openModal}
-        offModal={props.closeModal}
       />)}
     </div>
   );

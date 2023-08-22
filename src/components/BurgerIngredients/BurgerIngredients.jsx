@@ -11,35 +11,26 @@ import { useDispatch, useSelector } from "react-redux";
 import addToIngredientsList from "../../services/actions/addToIngredientsList";
 
 const BurgerIngredients = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [ingredient, setIngredient] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   const dispatch = useDispatch();
 
   const listIngredients = useSelector(state => state.ingredientsList.list);
+  const modalTogle = useSelector(state => state.modalTogle.togle);
 
   async function fillData() {
     try {
       let data = await getIngredients();
       data.data.map(ingredient => dispatch(addToIngredientsList(ingredient)));
+      setLoaded(true);
     } catch (err) {
       alert(err);
     }
   }
 
-  function openModal(ingredient) {
-    setIngredient(ingredient);
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  // useEffect(() => {
-  //   fillData();
-  // }, []);
-  fillData();
+  useEffect(() => {
+    fillData();
+  }, []);
 
   return (
     <div className={styles.burgerIngredients}>
@@ -48,29 +39,33 @@ const BurgerIngredients = (props) => {
       </p>
       <Bookmarks />
       <div className={styles.ingredientArea}>
-        <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Булки</p>
-        <IngredientsList
-          ingridients={listIngredients["bun"]}
-          openModal={openModal}
-          closeModal={closeModal}
-        />
-
-        <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Соусы</p>
-        <IngredientsList
-          ingridients={props.ingridients.sauce}
-          openModal={openModal}
-          closeModal={closeModal}
-        />
-          
-        <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Начинки</p>
-        <IngredientsList
-          ingridients={props.ingridients.main}
-          openModal={openModal}
-          closeModal={closeModal}
-        />
+        {listIngredients["bun"] &&
+          <>
+            <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Булки</p>
+            <IngredientsList
+              ingridients={listIngredients["bun"]}
+            />
+          </>
+        }
+        {listIngredients["sauce"] &&
+          <>
+            <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Соусы</p>
+            <IngredientsList
+              ingridients={listIngredients["sauce"]}
+            />
+          </>
+        }
+        {listIngredients["main"] &&
+          <>
+            <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Начинки</p>
+            <IngredientsList
+              ingridients={listIngredients["main"]}
+            />
+          </>
+        }
       </div>
-      {isOpen && <Modal offModal={closeModal} header="Детали ингредиента">
-        <IngredientDetails ingredient={ingredient} />
+      {modalTogle && <Modal header="Детали ингредиента">
+        <IngredientDetails />
       </Modal>}
     </div>
   );
