@@ -4,13 +4,11 @@ import Bookmarks from "./Bookmarks";
 import IngredientsList from "./IngredientsList";
 import Modal from "../Modal/Modal";
 import IngredientDetails from "../Modal/IngredientDetails";
-import PropTypes from 'prop-types';
-import { burgerType } from '../Utils/prop-types';
 import { getIngredients } from "../Utils/burger-api";
 import { useDispatch, useSelector } from "react-redux";
 import addToIngredientsList from "../../services/actions/addToIngredientsList";
 
-const BurgerIngredients = (props) => {
+const BurgerIngredients = () => {
   const [loaded, setLoaded] = useState(false);
 
   const dispatch = useDispatch();
@@ -70,14 +68,5 @@ const BurgerIngredients = (props) => {
     </div>
   );
 };
-
-BurgerIngredients.propTypes = {
-  ingridients: PropTypes.shape(
-    PropTypes.arrayOf(
-      PropTypes.shape(burgerType).isRequired
-    ).isRequired
-  ).isRequired
-};
-
 
 export default BurgerIngredients;

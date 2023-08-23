@@ -6,24 +6,14 @@ import Modal from "../Modal/Modal";
 import OrderDetails from "../Modal/OrderDetails";
 import { useDispatch, useSelector } from "react-redux";
 import setOrderNumber from "../../services/actions/setOrderNumber";
+import showModalTogle from "../../services/actions/showModalTogle";
 
 
 const BurgerConstructor = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const dispatch = useDispatch();
   
-  const totalSum = useSelector(state => state.totalSum.totalSum)
-  const orderNumber = useSelector(state => state.orderNumber.number)
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+  const totalSum = useSelector(state => state.totalSum.totalSum);
+  const modalTogle = useSelector(state => state.modalTogle.togle);
 
   function getNumberOrder() {
     let stringNumber = '';
@@ -52,12 +42,12 @@ const BurgerConstructor = () => {
             type="primary"
             size="large"
             extraClass="ml-10"
-            onClick={openModal}
+            onClick={() => {dispatch(showModalTogle())}}
           >Оформить заказ</Button>
         </div>
       </section>
-      {isOpen && <Modal offModal={closeModal} header="">
-        <OrderDetails numberOrder={orderNumber} />
+      {modalTogle && <Modal header="">
+        <OrderDetails />
       </Modal>}
     </div>
   );
