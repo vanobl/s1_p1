@@ -1,5 +1,6 @@
 const defaultModalTogle = {
-    togle: false
+    togle: false,
+    togleOrder: false
 }
 
 const modalTogle = (state = defaultModalTogle, action) => {
@@ -7,7 +8,11 @@ const modalTogle = (state = defaultModalTogle, action) => {
         case 'SHOW':
             return {...state, togle: true};
         case 'HIDE':
-            return {...state, togle: false};
+            return {...state, togle: false, togleOrder: false};
+        case 'SHOW_ORDER':
+            return {...state, togleOrder: true};
+        // case 'HIDE_ORDER':
+        //     return {...state, togleOrder: false};
         default:
             return state;
     }

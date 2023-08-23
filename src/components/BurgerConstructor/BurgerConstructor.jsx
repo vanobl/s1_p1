@@ -6,14 +6,14 @@ import Modal from "../Modal/Modal";
 import OrderDetails from "../Modal/OrderDetails";
 import { useDispatch, useSelector } from "react-redux";
 import setOrderNumber from "../../services/actions/setOrderNumber";
-import showModalTogle from "../../services/actions/showModalTogle";
+import showModalTogleOrder from "../../services/actions/showModalTogleOrder";
 
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
   
   const totalSum = useSelector(state => state.totalSum.totalSum);
-  const modalTogle = useSelector(state => state.modalTogle.togle);
+  const modalTogle = useSelector(state => state.modalTogle.togleOrder);
 
   function getNumberOrder() {
     let stringNumber = '';
@@ -42,7 +42,7 @@ const BurgerConstructor = () => {
             type="primary"
             size="large"
             extraClass="ml-10"
-            onClick={() => {dispatch(showModalTogle())}}
+            onClick={() => {dispatch(showModalTogleOrder())}}
           >Оформить заказ</Button>
         </div>
       </section>
