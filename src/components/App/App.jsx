@@ -6,6 +6,8 @@ import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import rootReducer from '../../services/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import { compose, createStore } from 'redux';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function App() {
   const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
@@ -15,9 +17,11 @@ function App() {
   return (
     <Provider store={store}>
       <section className={styles.app}>
-        <AppHeader />
+        <DndProvider backend={HTML5Backend}>
+          <AppHeader />
           <BurgerIngredients />
           <BurgerConstructor />
+        </DndProvider>
       </section>
     </Provider>
   );

@@ -6,10 +6,18 @@ import { burgerType } from '../Utils/prop-types';
 import { useDispatch } from "react-redux";
 import addSelectedIngredient from "../../services/actions/addSelectedIngredient";
 import showModalTogle from "../../services/actions/showModalTogle";
+import { useDrag } from "react-dnd";
 
 
 const ItemIngredient = (props) => {
   const dispatch = useDispatch();
+  const [{isDrag}, dragRef] = useDrag({
+    type: "ingredient",
+    item: props.info._id,
+    collect: monitor => ({
+      isDrag: monitor.isDragging()
+    })
+  });
 
   function setIngredient() {
     dispatch(addSelectedIngredient(props.info));
@@ -17,7 +25,8 @@ const ItemIngredient = (props) => {
   }
 
   return(
-    <div className={styles.elementStyle} onClick={() => {setIngredient()}}>
+    !isDrag &&
+    <div className={styles.elementStyle} onClick={() => {setIngredient()}} ref={dragRef}>
       <img className={styles.elementImage} src={props.info.image} alt="изображение товара" />
       <div className={styles.elementPrice}>
         <p className="text text_type_digits-default">{props.info.price}</p>&nbsp;

@@ -4,9 +4,21 @@ import styles from './SectionBurger.module.css'
 import BurgerElement from "./BurgerElement";
 import { useDispatch } from "react-redux";
 import increaseAmount from "../../services/actions/increaseAmount";
+import { useDrop } from "react-dnd";
 
 const SectionBurger = React.memo(() => {
   const dispatch = useDispatch();
+
+  function onDropHandler(id) {
+    console.log(id);
+  }
+
+  const [, dropTarget] = useDrop({
+    accept: "ingredient",
+    drop(itemId) {
+      onDropHandler(itemId);
+    }
+  });
 
   const sums = [1255, 988, 1337, 3000, 300, 874, 90, 1255];
 
@@ -15,7 +27,7 @@ const SectionBurger = React.memo(() => {
   }, []);
 
   return(
-    <div className={styles.sectionBurger}>
+    <div className={styles.sectionBurger} ref={dropTarget}>
       <ConstructorElement
         type="top"
         isLocked={true}
