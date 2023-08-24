@@ -4,7 +4,7 @@ import ModalOverlay from "./ModalOverlay";
 import styles from './Modal.module.css';
 import PropTypes from 'prop-types';
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import hideModalTogle from "../../services/actions/hideModalTogle";
 
 const Modal = (props) => {
