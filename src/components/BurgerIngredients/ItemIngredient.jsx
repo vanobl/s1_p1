@@ -13,7 +13,7 @@ const ItemIngredient = (props) => {
   const dispatch = useDispatch();
   const [{isDrag}, dragRef] = useDrag({
     type: "ingredient",
-    item: props.info._id,
+    item: props.info,
     collect: monitor => ({
       isDrag: monitor.isDragging()
     })
