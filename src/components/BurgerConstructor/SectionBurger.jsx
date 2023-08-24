@@ -25,9 +25,6 @@ const SectionBurger = () => {
     }
   });
 
-  // useEffect(() => {
-  // }, [loaded]);
-
   return(
     <div className={styles.sectionBurger} ref={dropTarget}>
       {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement

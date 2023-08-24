@@ -36,7 +36,7 @@ const BurgerIngredients = () => {
           Соберите бургер
       </p>
       <Bookmarks />
-      <div className={styles.ingredientArea}>
+      <div className={styles.ingredientArea} id="scrollList">
         {listIngredients["bun"] &&
           <>
             <p className={`text text_type_main-medium pt-10 ${styles.nameSection}`}>Булки</p>

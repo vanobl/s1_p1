@@ -34,6 +34,19 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
         }
       }
       return {...state, list: state.list, totalSum: getTotalSum()};
+    case 'DRAG_ELEMENT_IN_ORDER':
+      let newList = [...state.list];
+
+      let dragElement = newList.find(ingredient => ingredient._id === action.drag_id);
+
+      let dragIndex = newList.findIndex(ingredient => ingredient._id === action.drag_id);
+
+      let hoverIndex = newList.findIndex(ingredient => ingredient._id === action.hover_id);
+      
+      newList.splice(dragIndex, 1);
+      newList.splice(hoverIndex, 0, dragElement);
+
+      return {...state, list: newList, totalSum: getTotalSum()};
     case 'REMOVE_FROM_LIST_ORDER':
       let element = state.list.find(ingredient => ingredient._id === action.ingredient_id)
       let idx = state.list.indexOf(element);
