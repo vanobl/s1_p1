@@ -12,7 +12,6 @@ import showModalTogleOrder from "../../services/actions/showModalTogleOrder";
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
   
-  // const totalSum = useSelector(state => state.totalSum.totalSum);
   const totalSum = useSelector(state => state.ingredientsInOrder.totalSum);
   const modalTogle = useSelector(state => state.modalTogle.togleOrder);
 

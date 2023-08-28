@@ -1,6 +1,7 @@
 const defaultIngredientsInOrder = {
     list: [],
-    totalSum: 0
+    totalSum: 0,
+    lastUpdate: ''
 }
 
 const getTotalSum = (state = defaultIngredientsInOrder) => {
@@ -21,9 +22,7 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
   switch (action.type) {
     case 'ADD_TO_LIST_ORDER':
       if (action.ingredient.type !== 'bun') {
-        if (!state.list.find(ingredient => ingredient._id === action.ingredient._id)) {
-            state.list.push(action.ingredient);
-        }
+        state.list.push(action.ingredient);
       } else {
         let idx = state.list.findIndex(ingredient => ingredient.type === 'bun');
         if (idx !== -1) {
@@ -33,7 +32,7 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
           state.list.push(action.ingredient);
         }
       }
-      return {...state, list: state.list, totalSum: getTotalSum()};
+      return {...state, list: state.list, totalSum: getTotalSum(), lastUpdate: Date()};
     case 'DRAG_ELEMENT_IN_ORDER':
       let newList = [...state.list];
 
@@ -53,7 +52,7 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
       if (idx !== -1) {
         state.list.splice(idx, 1);
       }
-      return {...state, list: state.list, totalSum: getTotalSum()};
+      return {...state, list: state.list, totalSum: getTotalSum(), lastUpdate: Date()};
     default:
       return state;
   }
