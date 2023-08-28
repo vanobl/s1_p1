@@ -46,7 +46,7 @@ const BurgerElement = (props) => {
         price={props.price}
         thumbnail={props.image_mobile}
         extraClass="ml-2"
-        handleClose={() => {dispatch(removeIngredientsFromOrder(props.id));}}
+        handleClose={() => {dispatch(removeIngredientsFromOrder(props.ind));}}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './SectionBurger.module.css'
 import BurgerElement from "./BurgerElement";
@@ -9,13 +9,12 @@ import { useDrop } from "react-dnd";
 
 const SectionBurger = () => {
   const dispatch = useDispatch();
-  const [loaded, setLoaded] = useState(false);
 
   const listIngredientsInOrder = useSelector(state => state.ingredientsInOrder.list);
+  const lastUpdate = useSelector(state => state.ingredientsInOrder.lastUpdate);
 
   function onDropHandler(ingredient) {
     dispatch(addIngredientsToOrder(ingredient));
-    setLoaded(!loaded);
   }
 
   const [, dropTarget] = useDrop({
@@ -23,7 +22,7 @@ const SectionBurger = () => {
     drop(itemId) {
       onDropHandler(itemId);
     }
-  });
+  }, [lastUpdate]);
 
   return(
     <div className={styles.sectionBurger} ref={dropTarget}>
@@ -37,13 +36,16 @@ const SectionBurger = () => {
             extraClass={styles.bunTopAndBottom}
         />)}
       <div className={styles.sectionMainAndSauce}>
-        {listIngredientsInOrder.filter(item => item.type !== 'bun').map(ingredinet => <BurgerElement
+        {listIngredientsInOrder.filter(item => item.type !== 'bun').map((ingredinet, index) => {
+          return <BurgerElement
           key={ingredinet._id}
           name={ingredinet.name}
           price={ingredinet.price}
           id={ingredinet._id}
           image_mobile={ingredinet.image_mobile}
-        />)}
+          ind={index}
+          />
+        })}
       </div>
       {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement
             key={ingredient._id + '2'}

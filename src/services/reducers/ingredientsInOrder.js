@@ -26,8 +26,8 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
       } else {
         let idx = state.list.findIndex(ingredient => ingredient.type === 'bun');
         if (idx !== -1) {
-          state.list.splice(idx, 1);
-          state.list.push(action.ingredient);
+          state.list.splice(idx, 1, action.ingredient);
+          // state.list.push(action.ingredient);
         } else {
           state.list.push(action.ingredient);
         }
@@ -47,11 +47,12 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
 
       return {...state, list: newList, totalSum: getTotalSum()};
     case 'REMOVE_FROM_LIST_ORDER':
-      let element = state.list.find(ingredient => ingredient._id === action.ingredient_id)
-      let idx = state.list.indexOf(element);
-      if (idx !== -1) {
-        state.list.splice(idx, 1);
-      }
+      // let element = state.list.find(ingredient => ingredient._id === action.ingredient_id)
+      // let idx = state.list.indexOf(action);
+      // if (idx !== -1) {
+      //   state.list.splice(idx, 1);
+      // }
+      state.list.splice(action.ingredient_index, 1);
       return {...state, list: state.list, totalSum: getTotalSum(), lastUpdate: Date()};
     default:
       return state;
