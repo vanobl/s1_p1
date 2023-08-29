@@ -39,7 +39,7 @@ const BurgerElement = (props) => {
 
       dispatch(dragElementInOrder(dragIndex, hoverIndex));
 
-      // item.ind = hoverIndex;
+      item.ind = hoverIndex;
     }
   });
 
@@ -57,10 +57,10 @@ const BurgerElement = (props) => {
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
 
-  // <div className={styles.burgerElement} style={{opacity}} ref={ref}>
-
+  // ref={ref} временно убран, т.к. перемещение не работает должным образом
+  // планируется его вернуть, когда исправится проблема
   return(
-    <div className={styles.burgerElement} ref={ref} style={{opacity}}>
+    <div className={styles.burgerElement} style={{opacity}}>
       <div style={{cursor: "pointer"}}>
         <DragIcon type="primary" />
       </div>

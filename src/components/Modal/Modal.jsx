@@ -31,7 +31,7 @@ const Modal = (props) => {
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <p className="text text_type_main-large">
-            {props.header}
+            {props.header && props.header}
           </p>
           <div className={styles.closeButton}>
             <CloseIcon type="secondary" onClick={() => {closeModal();}} />
