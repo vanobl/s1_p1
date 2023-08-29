@@ -1,7 +1,7 @@
-const dragElementInOrder = (dragId, hoverId) => ({
+const dragElementInOrder = (dragIndex, hoverIndex) => ({
     type: 'DRAG_ELEMENT_IN_ORDER',
-    drag_id: dragId,
-    hover_id: hoverId
+    drag_index: dragIndex,
+    hover_index: hoverIndex
 });
 
 export default dragElementInOrder;

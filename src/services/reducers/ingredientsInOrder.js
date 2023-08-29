@@ -27,7 +27,6 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
         let idx = state.list.findIndex(ingredient => ingredient.type === 'bun');
         if (idx !== -1) {
           state.list.splice(idx, 1, action.ingredient);
-          // state.list.push(action.ingredient);
         } else {
           state.list.push(action.ingredient);
         }
@@ -36,22 +35,17 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
     case 'DRAG_ELEMENT_IN_ORDER':
       let newList = [...state.list];
 
-      let dragElement = newList.find(ingredient => ingredient._id === action.drag_id);
+      let dragElement = newList[action.drag_index];
 
-      let dragIndex = newList.findIndex(ingredient => ingredient._id === action.drag_id);
+      // let dragIndex = newList.findIndex(ingredient => ingredient._id === action.drag_id);
 
-      let hoverIndex = newList.findIndex(ingredient => ingredient._id === action.hover_id);
+      // let hoverIndex = newList.findIndex(ingredient => ingredient._id === action.hover_id);
       
-      newList.splice(dragIndex, 1);
-      newList.splice(hoverIndex, 0, dragElement);
+      newList.splice(action.drag_index, 1);
+      newList.splice(action.hover_index, 0, dragElement);
 
       return {...state, list: newList, totalSum: getTotalSum(), lastUpdate: Date()};
     case 'REMOVE_FROM_LIST_ORDER':
-      // let element = state.list.find(ingredient => ingredient._id === action.ingredient_id)
-      // let idx = state.list.indexOf(action);
-      // if (idx !== -1) {
-      //   state.list.splice(idx, 1);
-      // }
       let oldList = [...state.list];
       oldList.splice(action.ingredient_index, 1);
       return {...state, list: oldList, totalSum: getTotalSum(), lastUpdate: Date()};

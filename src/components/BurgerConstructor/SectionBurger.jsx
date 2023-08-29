@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import increaseAmount from "../../services/actions/increaseAmount";
 import addIngredientsToOrder from "../../services/actions/addIngredientsToOrder";
 import { useDrop } from "react-dnd";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const SectionBurger = () => {
   const dispatch = useDispatch();
@@ -25,42 +27,44 @@ const SectionBurger = () => {
   }, [lastUpdate]);
 
   return(
-    <div className={styles.sectionBurger} ref={dropTarget}>
-      {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement
-            key={ingredient._id + '1'}
-            type="top"
-            isLocked={true}
-            text={ingredient.name + ' (верх)'}
-            price={ingredient.price}
-            thumbnail={ingredient.image_mobile}
-            extraClass={styles.bunTopAndBottom}
-        />)}
-      <div className={styles.sectionMainAndSauce}>
-        {listIngredientsInOrder.map((ingredinet, index) => {
-          if (ingredinet.type !== 'bun') {
-            const itemKey = ingredinet._id + '-' + index;
+    <DndProvider backend={HTML5Backend}>
+      <div className={styles.sectionBurger} ref={dropTarget}>
+        {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement
+              key={ingredient._id + '1'}
+              type="top"
+              isLocked={true}
+              text={ingredient.name + ' (верх)'}
+              price={ingredient.price}
+              thumbnail={ingredient.image_mobile}
+              extraClass={styles.bunTopAndBottom}
+          />)}
+        <div className={styles.sectionMainAndSauce}>
+          {listIngredientsInOrder.map((ingredinet, index) => {
+            if (ingredinet.type !== 'bun') {
+              const itemKey = ingredinet._id + '-' + index;
 
-            return <BurgerElement
-            key={itemKey}
-            name={ingredinet.name}
-            price={ingredinet.price}
-            id={ingredinet._id}
-            image_mobile={ingredinet.image_mobile}
-            ind={index}
-            />
-          }
-        })}
+              return <BurgerElement
+              key={itemKey}
+              name={ingredinet.name}
+              price={ingredinet.price}
+              id={ingredinet._id}
+              image_mobile={ingredinet.image_mobile}
+              ind={index}
+              />
+            }
+          })}
+        </div>
+        {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement
+              key={ingredient._id + '2'}
+              type="bottom"
+              isLocked={true}
+              text={ingredient.name + ' (низ)'}
+              price={ingredient.price}
+              thumbnail={ingredient.image_mobile}
+              extraClass={styles.bunTopAndBottom}
+          />)}
       </div>
-      {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement
-            key={ingredient._id + '2'}
-            type="bottom"
-            isLocked={true}
-            text={ingredient.name + ' (низ)'}
-            price={ingredient.price}
-            thumbnail={ingredient.image_mobile}
-            extraClass={styles.bunTopAndBottom}
-        />)}
-    </div>
+    </DndProvider>
   );
 };
 
