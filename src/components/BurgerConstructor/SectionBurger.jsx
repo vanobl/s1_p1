@@ -36,15 +36,19 @@ const SectionBurger = () => {
             extraClass={styles.bunTopAndBottom}
         />)}
       <div className={styles.sectionMainAndSauce}>
-        {listIngredientsInOrder.filter(item => item.type !== 'bun').map((ingredinet, index) => {
-          return <BurgerElement
-          key={ingredinet._id}
-          name={ingredinet.name}
-          price={ingredinet.price}
-          id={ingredinet._id}
-          image_mobile={ingredinet.image_mobile}
-          ind={index}
-          />
+        {listIngredientsInOrder.map((ingredinet, index) => {
+          if (ingredinet.type !== 'bun') {
+            const itemKey = ingredinet._id + '-' + index;
+
+            return <BurgerElement
+            key={itemKey}
+            name={ingredinet.name}
+            price={ingredinet.price}
+            id={ingredinet._id}
+            image_mobile={ingredinet.image_mobile}
+            ind={index}
+            />
+          }
         })}
       </div>
       {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement

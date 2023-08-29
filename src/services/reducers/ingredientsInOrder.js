@@ -45,15 +45,16 @@ const ingredientsInOrder = (state = defaultIngredientsInOrder, action) => {
       newList.splice(dragIndex, 1);
       newList.splice(hoverIndex, 0, dragElement);
 
-      return {...state, list: newList, totalSum: getTotalSum()};
+      return {...state, list: newList, totalSum: getTotalSum(), lastUpdate: Date()};
     case 'REMOVE_FROM_LIST_ORDER':
       // let element = state.list.find(ingredient => ingredient._id === action.ingredient_id)
       // let idx = state.list.indexOf(action);
       // if (idx !== -1) {
       //   state.list.splice(idx, 1);
       // }
-      state.list.splice(action.ingredient_index, 1);
-      return {...state, list: state.list, totalSum: getTotalSum(), lastUpdate: Date()};
+      let oldList = [...state.list];
+      oldList.splice(action.ingredient_index, 1);
+      return {...state, list: oldList, totalSum: getTotalSum(), lastUpdate: Date()};
     default:
       return state;
   }

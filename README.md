@@ -44,3 +44,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Зависимости
+npm i react-css-modules
+npm install @ya.praktikum/react-developer-burger-ui-components
+npm install react-redux redux-thunk redux @reduxjs/toolkit react-dnd react-dnd-html5-backend
