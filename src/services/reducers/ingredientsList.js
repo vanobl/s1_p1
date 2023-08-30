@@ -1,12 +1,15 @@
 // Исходное состояние списка ингредиентов
 const defaultIngredientsList = {
-    list: {}
+    list: null
 }
 
 // Редьюсер списка ингредиентов
 const ingredientsList = (state = defaultIngredientsList, action) => {
     switch (action.type) {
         case 'ADD_TO_LIST':
+            if (!state.list) {
+                state.list = {};
+            }
             if (!state.list[action.newIngredient.type]) {
                 state.list[action.newIngredient.type] = [];
             }
@@ -21,6 +24,9 @@ const ingredientsList = (state = defaultIngredientsList, action) => {
                 return state;
             }
         default:
+            if (!state.list) {
+                state.list = {};
+            }
             return state;
     }
 }
