@@ -6,39 +6,37 @@ import Modal from "../Modal/Modal";
 import OrderDetails from "../Modal/OrderDetails";
 import { useDispatch, useSelector } from "react-redux";
 import setOrderNumber from "../../services/actions/setOrderNumber";
+import showModalTogleOrder from "../../services/actions/showModalTogleOrder";
+import { createOrder } from "../Utils/burger-api";
 
 
 const BurgerConstructor = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const dispatch = useDispatch();
   
-  const totalSum = useSelector(state => state.totalSum.totalSum)
-  const orderNumber = useSelector(state => state.orderNumber.number)
+  const totalSum = useSelector(state => state.ingredientsInOrder.totalSum);
+  const listIngredientsInOrder = useSelector(state => state.ingredientsInOrder.list);
+  const modalTogle = useSelector(state => state.modalTogle.togleOrder);
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  async function getCreatedOrder() {
+    try {
+      const idList = [];
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+      listIngredientsInOrder.map((item) => {
+        idList.push(item._id);
+      });
 
+      const data = await createOrder(idList);
 
-  function getNumberOrder() {
-    let stringNumber = '';
-
-    for (let i = 0; i < 6; i++) {
-        let itemNumber = Math.floor(Math.random() * 9);
-        stringNumber += itemNumber;
+      if (data.success === true) {
+        dispatch(setOrderNumber(data.order.number));
+        dispatch(showModalTogleOrder())
+      } else {
+        alert("Ошибка формирования заказа: " + data);
+      }
+    } catch (err) {
+      alert(err);
     }
-
-    return stringNumber;
   }
-
-  useEffect(() => {
-    dispatch(setOrderNumber(getNumberOrder()));
-  }, []);
 
   return(
     <div className={styles.BurgerConstructor}>
@@ -52,12 +50,12 @@ const BurgerConstructor = () => {
             type="primary"
             size="large"
             extraClass="ml-10"
-            onClick={openModal}
+            onClick={getCreatedOrder}
           >Оформить заказ</Button>
         </div>
       </section>
-      {isOpen && <Modal offModal={closeModal} header="">
-        <OrderDetails numberOrder={orderNumber} />
+      {modalTogle && <Modal>
+        <OrderDetails />
       </Modal>}
     </div>
   );

@@ -1,16 +1,15 @@
 import React from "react";
 import styles from './ModalOverlay.module.css';
-import PropTypes from 'prop-types';
+import { useDispatch } from "react-redux";
+import hideModalTogle from "../../services/actions/hideModalTogle";
 
-const ModalOverlay = (props) => {
+const ModalOverlay = () => {
+  const dispatch = useDispatch();
+
   return(
-    <div className={styles.modalOvelay} onClick={props.offModal}>
+    <div className={styles.modalOvelay} onClick={() => {dispatch(hideModalTogle());}}>
     </div>
   );
-};
-
-ModalOverlay.propTypes = {
-  offModal: PropTypes.func.isRequired
 };
 
 export default ModalOverlay;

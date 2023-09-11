@@ -4,14 +4,19 @@ import ModalOverlay from "./ModalOverlay";
 import styles from './Modal.module.css';
 import PropTypes from 'prop-types';
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { useDispatch } from "react-redux";
+import hideModalTogle from "../../services/actions/hideModalTogle";
 
 const Modal = (props) => {
   const modalRoot = document.getElementById("modal-root");
+  const dispatch = useDispatch();
+
+  const closeModal = () => {dispatch(hideModalTogle());}
 
   useEffect(() => {
     const escFunction = (event) => {
       if (event.key === 'Escape') {
-        props.offModal();
+        closeModal();
       }
     };
     document.addEventListener('keydown', escFunction, false);
@@ -26,15 +31,15 @@ const Modal = (props) => {
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <p className="text text_type_main-large">
-            {props.header}
+            {props.header && props.header}
           </p>
           <div className={styles.closeButton}>
-            <CloseIcon type="secondary" onClick={props.offModal} />
+            <CloseIcon type="secondary" onClick={() => {closeModal();}} />
           </div>
         </div>
         {props.children}
       </div>
-      <ModalOverlay offModal={props.offModal} />
+      <ModalOverlay />
     </section>,
     modalRoot
   );
@@ -42,7 +47,6 @@ const Modal = (props) => {
 
 Modal.propTypes = {
   header: PropTypes.string,
-  offModal: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired
 };
 

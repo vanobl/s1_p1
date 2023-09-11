@@ -1,76 +1,71 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './SectionBurger.module.css'
 import BurgerElement from "./BurgerElement";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import increaseAmount from "../../services/actions/increaseAmount";
+import addIngredientsToOrder from "../../services/actions/addIngredientsToOrder";
+import { useDrop } from "react-dnd";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
-const SectionBurger = React.memo(() => {
+const SectionBurger = () => {
   const dispatch = useDispatch();
 
-  const sums = [1255, 988, 1337, 3000, 300, 874, 90, 1255];
+  const listIngredientsInOrder = useSelector(state => state.ingredientsInOrder.list);
+  const lastUpdate = useSelector(state => state.ingredientsInOrder.lastUpdate);
 
-  useEffect(() => {
-    sums.map(itemSum => dispatch(increaseAmount(itemSum)));
-  }, []);
+  function onDropHandler(ingredient) {
+    dispatch(addIngredientsToOrder(ingredient));
+  }
+
+  const [, dropTarget] = useDrop({
+    accept: "ingredient",
+    drop(itemId) {
+      onDropHandler(itemId);
+    }
+  }, [lastUpdate]);
 
   return(
-    <div className={styles.sectionBurger}>
-      <ConstructorElement
-        type="top"
-        isLocked={true}
-        text="Краторная булка N-200i (верх)"
-        price={1255}
-        thumbnail="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-        extraClass={styles.bunTopAndBottom}
-      />
-      <div className={styles.sectionMainAndSauce}>
-        <BurgerElement
-          key={"643d69a5c3f7b9001cfa093e"}
-          name={"Филе Люминесцентного тетраодонтимформа"}
-          price={988}
-          image_mobile={"https://code.s3.yandex.net/react/code/meat-03-mobile.png"}
-        />
-        <BurgerElement
-          key={"643d69a5c3f7b9001cfa093f"}
-          name={"Мясо бессмертных моллюсков Protostomia"}
-          price={1337}
-          image_mobile={"https://code.s3.yandex.net/react/code/meat-02-mobile.png"}
-        />
-        <BurgerElement
-          key={"643d69a5c3f7b9001cfa0940"}
-          name={"Говяжий метеорит (отбивная)"}
-          price={3000}
-          image_mobile={"https://code.s3.yandex.net/react/code/meat-04-mobile.png"}
-        />
-        <BurgerElement
-          key={"643d69a5c3f7b9001cfa0946"}
-          name={"Хрустящие минеральные кольца"}
-          price={300}
-          image_mobile={"https://code.s3.yandex.net/react/code/mineral_rings-mobile.png"}
-        />
-        <BurgerElement
-          key={"643d69a5c3f7b9001cfa0947"}
-          name={"Плоды Фалленианского дерева"}
-          price={874}
-          image_mobile={"https://code.s3.yandex.net/react/code/sp_1-mobile.png"}
-        />
-        <BurgerElement
-          name={"Соус Spicy-X"}
-          price={90}
-          image_mobile={"https://code.s3.yandex.net/react/code/sauce-02-mobile.png"}
-        />
+    <DndProvider backend={HTML5Backend}>
+      <div className={styles.sectionBurger} ref={dropTarget}>
+        {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement
+              key={ingredient._id + '1'}
+              type="top"
+              isLocked={true}
+              text={ingredient.name + ' (верх)'}
+              price={ingredient.price}
+              thumbnail={ingredient.image_mobile}
+              extraClass={styles.bunTopAndBottom}
+          />)}
+        <div className={styles.sectionMainAndSauce}>
+          {listIngredientsInOrder.map((ingredinet, index) => {
+            if (ingredinet.type !== 'bun') {
+              const itemKey = ingredinet._id + '-' + index;
+
+              return <BurgerElement
+              key={itemKey}
+              name={ingredinet.name}
+              price={ingredinet.price}
+              id={ingredinet._id}
+              image_mobile={ingredinet.image_mobile}
+              ind={index}
+              />
+            }
+          })}
+        </div>
+        {listIngredientsInOrder.filter(item => item.type === 'bun').map(ingredient => <ConstructorElement
+              key={ingredient._id + '2'}
+              type="bottom"
+              isLocked={true}
+              text={ingredient.name + ' (низ)'}
+              price={ingredient.price}
+              thumbnail={ingredient.image_mobile}
+              extraClass={styles.bunTopAndBottom}
+          />)}
       </div>
-      <ConstructorElement
-        type="bottom"
-        isLocked={true}
-        text="Краторная булка N-200i (низ)"
-        price="1255"
-        thumbnail="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-        extraClass={styles.bunTopAndBottom}
-      />
-    </div>
+    </DndProvider>
   );
-});
+};
 
 export default SectionBurger;

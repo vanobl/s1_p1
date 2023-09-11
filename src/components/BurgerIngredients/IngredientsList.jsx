@@ -10,8 +10,6 @@ const IngredientsList = (props) => {
       {props.ingridients.map(info => <ItemIngredient
         info={info}
         key={info._id}
-        onModal={props.openModal}
-        offModal={props.closeModal}
       />)}
     </div>
   );
@@ -20,9 +18,7 @@ const IngredientsList = (props) => {
 IngredientsList.propTypes = {
   ingridients: PropTypes.arrayOf(
     PropTypes.shape(burgerType).isRequired
-  ).isRequired,
-  openModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired
+  ).isRequired
 };
 
 export default IngredientsList;
