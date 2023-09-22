@@ -1,16 +1,20 @@
 import React from "react";
 import classesButton from './AppHeaderButton.module.css';
 import PropTypes from 'prop-types';
+import { NavLink, Link } from "react-router-dom";
 
 
 const AppHeaderButton = (props) => {
+  const url = props.link ? props.link : "#";
+  
   return (
-    <a
-      className={props.isActive ? classesButton.head_button_active : classesButton.head_button}
-      href="#"
+    <NavLink
+      to={{ pathname: url }}
+      end
+      className={({isActive, isPending}) => isActive ? classesButton.head_button_active : classesButton.head_button}
     >
-     {props.children}
-    </a>
+      {props.children}
+    </NavLink>
   );
 };
 

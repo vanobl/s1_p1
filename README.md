@@ -49,3 +49,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 npm i react-css-modules
 npm install @ya.praktikum/react-developer-burger-ui-components
 npm install react-redux redux-thunk redux @reduxjs/toolkit react-dnd react-dnd-html5-backend
+npm i react-router-dom
