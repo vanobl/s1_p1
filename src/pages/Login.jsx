@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { EmailInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 
 
 const Login = () => {
+  const [emailText, setEmailText] = useState('');
+  const [passwordText, setPasswordText] = useState('');
+
   return (
     <>
       <AppHeader />
@@ -21,10 +24,14 @@ const Login = () => {
             placeholder="Логин"
             isIcon={false}
             extraClass="mb-6"
+            value={emailText}
+            onChange={e => {setEmailText(e.target.value)}}
           />
           <PasswordInput
             name={'password'}
             extraClass="mb-6"
+            value={passwordText}
+            onChange={e => {setPasswordText(e.target.value)}}
           />
           <Button htmlType="button" type="primary" size="medium">
             Войти

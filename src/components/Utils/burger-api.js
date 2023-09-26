@@ -1,8 +1,8 @@
 const NORMA_API = "https://norma.nomoreparties.space";
 const NORMA_API_CREATE_ORDER = 'https://norma.nomoreparties.space/api/orders';
-const NOMA_API_FORGOT_PASSWORD = 'https://norma.nomoreparties.space/api/password-reset';
-const NOMA_API_RESET_PASSWORD = 'https://norma.nomoreparties.space/api/password-reset/reset';
-const NOMA_API_REGISTER = 'https://norma.nomoreparties.space/api/auth/register';
+const NORMA_API_FORGOT_PASSWORD = 'https://norma.nomoreparties.space/api/password-reset';
+const NORMA_API_RESET_PASSWORD = 'https://norma.nomoreparties.space/api/password-reset/reset';
+const NORMA_API_REGISTER = 'https://norma.nomoreparties.space/api/auth/register';
 
 export async function getIngredients() {
   try {
@@ -52,7 +52,7 @@ export async function createOrder(ingredientsList) {
  */
 export async function forgotPassword(forgotEmail) {
   try {
-    const response = await fetch(NOMA_API_FORGOT_PASSWORD, {
+    const response = await fetch(NORMA_API_FORGOT_PASSWORD, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -80,7 +80,7 @@ export async function forgotPassword(forgotEmail) {
  */
 export async function resertPassword(newPassword, newToken) {
   try {
-    const response = await fetch(NOMA_API_RESET_PASSWORD, {
+    const response = await fetch(NORMA_API_RESET_PASSWORD, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -107,7 +107,7 @@ export async function resertPassword(newPassword, newToken) {
  */
 export async function registerUser(newEmail, newPassword, newName) {
   try {
-    const response = await fetch(NOMA_API_REGISTER, {
+    const response = await fetch(NORMA_API_REGISTER, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
