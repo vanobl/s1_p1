@@ -2,6 +2,7 @@ const NORMA_API = "https://norma.nomoreparties.space";
 const NORMA_API_CREATE_ORDER = 'https://norma.nomoreparties.space/api/orders';
 const NOMA_API_FORGOT_PASSWORD = 'https://norma.nomoreparties.space/api/password-reset';
 const NOMA_API_RESET_PASSWORD = 'https://norma.nomoreparties.space/api/password-reset/reset';
+const NOMA_API_REGISTER = 'https://norma.nomoreparties.space/api/auth/register';
 
 export async function getIngredients() {
   try {
@@ -16,6 +17,12 @@ export async function getIngredients() {
   }
 };
 
+
+/**
+ * Возвращает полученный JSON от API
+ * @param {object} ingredientsList 
+ * @returns {json} content
+ */
 export async function createOrder(ingredientsList) {
   try {
     const response = await fetch(NORMA_API_CREATE_ORDER, {
@@ -37,6 +44,12 @@ export async function createOrder(ingredientsList) {
   }
 }
 
+
+/**
+ * Возвращает полученный JSON от API восстановления пароля.
+ * @param {string} forgotEmail Email, на который отправляется письмо с кодом.
+ * @returns {json} content JSON, в котором содержится ответ
+ */
 export async function forgotPassword(forgotEmail) {
   try {
     const response = await fetch(NOMA_API_FORGOT_PASSWORD, {
@@ -58,6 +71,13 @@ export async function forgotPassword(forgotEmail) {
   }
 }
 
+
+/**
+ * Возвращает полученный JSON от API
+ * @param {string} newPassword 
+ * @param {string} newToken 
+ * @returns {json} content
+ */
 export async function resertPassword(newPassword, newToken) {
   try {
     const response = await fetch(NOMA_API_RESET_PASSWORD, {
@@ -75,6 +95,33 @@ export async function resertPassword(newPassword, newToken) {
     return content
   } catch (err) {
     alert("Ошибка сброса пароля " + err);
+  }
+}
+
+/**
+ * Возвращает полученный JSON от API
+ * @param {string} newEmail 
+ * @param {string} newPassword 
+ * @param {string} newName 
+ * @returns {json} content
+ */
+export async function registerUser(newEmail, newPassword, newName) {
+  try {
+    const response = await fetch(NOMA_API_REGISTER, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({password: newPassword, email: newEmail, name: newName})
+    });
+
+    status(response);
+
+    const content = await response.json();
+    return content
+  } catch (err) {
+    alert("Ошибка регистрации пользователя " + err);
   }
 }
 

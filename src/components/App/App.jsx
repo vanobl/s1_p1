@@ -4,6 +4,7 @@ import Main from '../../pages/Main';
 import Login from '../../pages/Login';
 import Registration from '../../pages/Registration';
 import ForgotPassword from '../../pages/ForgotPassword';
+import ResetPassword from '../../pages/ResetPassword';
 import rootReducer from '../../services/reducers/rootReducer';
 import { Provider } from 'react-redux';
 import { compose, createStore } from 'redux';
@@ -26,6 +27,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Registration />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
             </Routes>
           </BrowserRouter>
         </DndProvider>

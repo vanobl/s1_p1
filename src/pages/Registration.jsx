@@ -1,13 +1,31 @@
-import React from "react";
-import { EmailInput } from "@ya.praktikum/react-developer-burger-ui-components";
-import { PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import React, { useCallback, useState } from "react";
+import { EmailInput, Input, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './Registration.module.css'
 import AppHeader from "../components/AppHeader/AppHeader";
 import { Link } from "react-router-dom";
+import { registerUser } from "../components/Utils/burger-api";
 
 
 const Registration = () => {
+  const [newName, setNewName] = useState('');
+  const [newEmail, setNewEmail] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+
+  // async function register(e) {
+  //   e.preventDefault();
+  //   const respJson = await registerUser(newEmail, newPassword, newName);
+  //   alert(respJson.success + ' : ' + respJson.message);
+  // }
+
+  const register = useCallback(
+    async e => {
+      e.preventDefault();
+      const respJson = await registerUser(newEmail, newPassword, newName);
+      alert(respJson.success + ' : ' + respJson.message);
+    },
+    [newName, newEmail, newPassword]
+  );
+
   return (
     <>
       <AppHeader />
@@ -16,23 +34,32 @@ const Registration = () => {
           <p className={`text text_type_main-medium mb-6 ${styles.formHeader}`}>
             Регистрация
           </p>
-          <EmailInput
-            name={'name'}
+          <Input
+            type={'text'}
             placeholder="Имя"
-            isIcon={false}
+            name={'name'}
+            error={false}
+            errorText={'Ошибка'}
+            size={'default'}
             extraClass="mb-6"
+            value={newName}
+            onChange={e => setNewName(e.target.value)}
           />
           <EmailInput
             name={'email'}
             placeholder="E-mail"
             isIcon={false}
             extraClass="mb-6"
+            value={newEmail}
+            onChange={e => setNewEmail(e.target.value)}
           />
           <PasswordInput
             name={'password'}
             extraClass="mb-6"
+            value={newPassword}
+            onChange={e => setNewPassword(e.target.value)}
           />
-          <Button htmlType="button" type="primary" size="medium">
+          <Button htmlType="button" type="primary" size="medium" onClick={register}>
             Зарегистрироваться
           </Button>
           <p className="text text_type_main-small text_color_inactive mt-20">
